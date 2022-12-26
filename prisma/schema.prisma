@@ -14,11 +14,13 @@ model Users {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  email String
+  email String @unique
   hash String
   firstName String?
   lastName String?
-  
+
+  @@map("users")
+  tickets Tickets[]
 }
 
 model Tickets{
@@ -26,6 +28,8 @@ model Tickets{
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     createdById Int
+    user Users @relation(fields: [createdById], references: [id])
+
     createdBy String
 
     title String
@@ -33,5 +37,7 @@ model Tickets{
     amount Int
     approvedBy String
     decided Boolean @default(false)
+
+    @@map("tickets")
 
 }
