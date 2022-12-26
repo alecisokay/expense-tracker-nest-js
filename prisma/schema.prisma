@@ -12,10 +12,26 @@ datasource db {
 
 model Users {
   id Int @id @default(autoincrement())
-  createdAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email String
+  hash String
+  firstName String?
+  lastName String?
+  
 }
 
 model Tickets{
     id Int @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    createdById Int
+    createdBy String
+
+    title String
+    description String
+    amount Int
+    approvedBy String
+    decided Boolean @default(false)
 
 }
