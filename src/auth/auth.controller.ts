@@ -12,13 +12,14 @@ export class AuthController{
     // dont use Req becuase it is express and I want to switch to Fastify.
     @Post('signup')
     signup(@Body() dto : AuthDto){
-    
         return this.authService.signup(dto);
     }
 
 
     @Post('signin')
-    signin(){
-        return this.authService.signin();
+    signin(@Body() dto : AuthDto){
+        return this.authService.signin(dto);
     }
+
+    
 }

@@ -28,7 +28,7 @@ model Tickets{
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     createdById Int
-    user Users @relation(fields: [createdById], references: [id])
+    users Users @relation(fields: [createdById], references: [id])
 
     createdBy String
 
